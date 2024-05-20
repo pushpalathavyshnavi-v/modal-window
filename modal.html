@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal-1</title>
+    <style>
+        html,
+        body {
+            padding: 2px;
+            border: 0;
+            height: 100%;
+        }
+
+        html {
+            background-image: url("bluewall.png");
+            background-size: cover;
+            background-position: center center;
+            /*useful for placing bg img*/
+        }
+
+        .main_btn {
+            position: fixed;
+            top: 48%;
+            left: 50%;
+            border-radius: 8%;
+            padding-left: 5%;
+            padding-right: 5%;
+            font-size: 15px;
+            background-color: navy;
+            color: azure;
+            outline: 0;
+            transition: all 0.2s ease-in-out;
+            transform: translate(-50%, -50%);
+            /*for responsive button*/
+        }
+
+        .main_btn:hover {
+            background-color: rgb(27, 27, 218);
+            box-shadow: 2px 3px 0 white, 5px 3px 5px 5px rgb(0, 0, 0, 1);
+            /*shadowstyling*/
+        }
+
+        .main_btn:active {
+            margin-top: 0px;
+            box-shadow: none;
+        }
+
+        .md-bg {
+            background-color: rgb(0, 0, 0, 0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           z-index:-3;
+           opacity: 0;/* display: none;*/
+            /*if zindex is not added and only_opacity is added then main_btn doesnt work*/
+        }
+
+        #modal {
+            background-color: azure;
+            font-family: cursive;
+            border: 5px black;
+            padding: 2%;
+            width: 40%;
+            position: fixed;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        #b1 {
+            background-color: whitesmoke;
+        }
+
+        #b2 {
+            background-color: navy;
+            color: azure;
+        }
+
+        .btn {
+            text-align: right;
+        }
+
+        #b1:hover,
+        #b2:hover {
+            box-shadow: 0 2px 0 rgb(0, 0, 0, 0.4), 2px 0 0 1px rgb(0, 0, 0, 0.4);
+        }
+        
+        @media only screen and (min-device-width: 300px) and (max-device-width: 800px) {
+     body {
+    background-image: url('bluewall.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+     background-position: center center;
+     
+
+    }
+   }
+</style>
+</head>
+
+<body>
+    <button class="main_btn">
+        <h4>About_Modal </h4>
+    </button>
+    <div class="md-bg">
+        <div id="modal">
+            <h1>MODAL !</h1>
+            <p>welcome, this modal is part of course for hands on experience!!.</p>
+            <p>we create pop up modal page using html5,css3 and javascript all on our own. !!! </p>
+            <div class="btn">
+                <button id="b1">Close</button>
+                <button id="b2">Accept</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const opbtn = document.querySelector(".main_btn");
+        var modal = document.getElementsByClassName("md-bg");
+        const clbtn = document.getElementById("b1");
+        const Abtn = document.getElementById("b2");
+
+        opbtn.addEventListener('click', function (event) {
+          
+            modal[0].style.zIndex = "2";
+            modal[0].style.opacity='1';/*display = "block";*/
+
+        });
+
+        clbtn.addEventListener('click', function (event) {
+            
+            
+            modal[0].style.display = "none";
+            location.reload();
+
+        });
+
+        clbtn.addEventListener('mouseover', function (event) {  
+            clbtn.style.color="navy";
+        }  );    
+        Abtn.addEventListener('click', function (event) {
+            modal[0].style.display = "none";
+            location.reload();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
